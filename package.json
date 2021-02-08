@@ -1,8 +1,8 @@
 {
   "name": "amfjs",
-  "description": "AMFJS is an AMF Client JavaScript library",
+  "description": "AMFJS is an AMF 3 Client JavaScript library",
   "version": "1.0.0",
-  "author": "Emil Malinov <emilkm@gmail.com> (http://github.com/emilkm)",
+  "author": "kenshi Yamamura <kenshi@fes-total.com> (http://github.com/kenshiYM)",
   "devDependencies": {
     "tape": "^4.6.2"
   }

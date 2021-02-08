@@ -1,32 +1,14 @@
 // Type definitions for amfjs
-// Project: https://github.com/emilkm/amfjs
-// Definitions by: Emil Malinov
+// Project: https://github.com/kenshiYM/amfjs
+// Definitions by: kenshi Yamamura
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-declare namespace amf {
-    var classes: any[];
-    var clients: Client[];
+export declare namespace amf {
+    var classRegistry: any[];
 
-    function registerClass(name: string, clazz: any);
-    function getClient(destination: string): Client;
-
-    class Client {
-        constructor(destination: string, endpoint: string, timeout?: number);
-        setSessionId(value: string);
-        releaseQueue();
-        invoke<Response>(source: string, operation: string, params: any, block: boolean = false, nobatch: boolean = false): Promise<Response>;
-    }
-
-    interface ResponseFactory {
-        new (code, message, detail, data, $scope): Response;
-    }
-    var Response: ResponseFactory;
-    interface Response {
-        $scope: any;
-        code: number;
-        message: string;
-        detail: any;
-        data: any;
-    }
+    export function registerClass(name: string, clazz: any);
+    export function init(endpoint: string, timeout?: number);
+    export function addHeader(name: string, value: string);
+    export function invoke(destination: string, source: string, operation: string, params: any, onResult: any, onStatus: any);
 }
 

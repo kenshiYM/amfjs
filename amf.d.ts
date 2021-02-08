@@ -12,3 +12,4 @@ export declare namespace amf {
     export function invoke(destination: string, source: string, operation: string, params: any, onResult: any, onStatus: any);
 }
 
+export {amf};

@@ -1,6 +1,7 @@
 /***
  * AMF JavaScript library by Emil Malinov https://github.com/emilkm/amfjs
  */
+Object.defineProperty(exports, "__esModule", { value: true });
 amf = {
 
   clients: {},
@@ -393,15 +394,20 @@ amf.Client.prototype._send = function(xhr, packet) {
               this.clientId = body.data.clientId;
               xhr.promises[i].resolve(new amf.Response(0, "", null, null));
             } else {
-              if (body.data._explicitType == "flex.messaging.messages.AcknowledgeMessage" && body.data.body._explicitType == "AMFResult") {
-                xhr.promises[i].resolve(new amf.Response(body.data.body.code, body.data.body.message, body.data.body.detail, body.data.body.data));
-              } else if (body.data.body.hasOwnProperty("code") && body.data.body.hasOwnProperty("data")) {
-                xhr.promises[i].resolve(new amf.Response(body.data.body.code, "", null, body.data.body));
-              } else if (body.data.body.hasOwnProperty("data")) {
-                xhr.promises[i].resolve(new amf.Response(0, "", null, body.data.body.data));
+              if (body.data._explicitType == "flex.messaging.messages.AcknowledgeMessage") {
+                xhr.promises[i].resolve(new amf.Response(0, "", body.data, body.data.body))
               } else {
                 xhr.promises[i].reject(new amf.Response(-1002, "Unknown result message.", body.data));
               }
+              // if (body.data._explicitType == "flex.messaging.messages.AcknowledgeMessage" && body.data.body._explicitType == "AMFResult") {
+              //   xhr.promises[i].resolve(new amf.Response(body.data.body.code, body.data.body.message, body.data.body.detail, body.data.body.data));
+              // } else if (body.data.body.hasOwnProperty("code") && body.data.body.hasOwnProperty("data")) {
+              //   xhr.promises[i].resolve(new amf.Response(body.data.body.code, "", null, body.data.body));
+              // } else if (body.data.body.hasOwnProperty("data")) {
+              //   xhr.promises[i].resolve(new amf.Response(0, "", null, body.data.body.data));
+              // } else {
+              //   xhr.promises[i].reject(new amf.Response(-1002, "Unknown result message.", body.data));
+              // }
             }
           } else {
             if (body.data._explicitType == "flex.messaging.messages.ErrorMessage") {
@@ -1721,3 +1727,5 @@ amf.toVector = function(type, array, fixed) {
 
   self.promise = promiz
 })(amf);
+
+exports.default = amf;

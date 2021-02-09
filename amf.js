@@ -1,8 +1,7 @@
 /***
  * AMF JavaScript library by Emil Malinov https://github.com/emilkm/amfjs
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-var amf = {
+amf = {
 
   clients: {},
   classes: {},
@@ -1727,5 +1726,3 @@ amf.toVector = function(type, array, fixed) {
 
   self.promise = promiz
 })(amf);
-
-exports.default = amf;

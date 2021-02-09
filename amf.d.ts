@@ -3,7 +3,7 @@
 // Definitions by: kenshi yamamura
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-declare namespace amf {
+declare module amf {
     var classes: any[];
     var clients: Client[];
 
@@ -29,5 +29,3 @@ declare namespace amf {
         data: any;
     }
 }
-
-export default amf;

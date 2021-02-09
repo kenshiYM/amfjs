@@ -3,7 +3,7 @@
 // Definitions by: kenshi yamamura
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-export declare module amf {
+declare module amf {
     var classes: any[];
     var clients: Client[];
 

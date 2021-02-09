@@ -23,7 +23,7 @@ Here is a AMFJS Ping Pong example:
 <body>
 	<script type="text/javascript">
 		amf.init("amfphp", "http://127.0.0.1/server/gateway.php");
-        amf.invoke("test", "ping", [],
+        amf.invoke("test", "ping", []).then(
             function(data) {
                 console.log(data);
             },
@@ -46,7 +46,7 @@ __amf.init__ sets the _destination_ and _endpoint_ of the AMF Client.
 
 
 ```javascript
-amf.invoke("test", "ping", [],
+amf.invoke("test", "ping", []).then(
     function(data) {
         console.log(data);
     },

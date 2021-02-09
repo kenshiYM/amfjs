@@ -2,7 +2,7 @@
  * AMF JavaScript library by Emil Malinov https://github.com/emilkm/amfjs
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-amf = {
+var amf = {
 
   clients: {},
   classes: {},

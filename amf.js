@@ -439,7 +439,11 @@ amf.Client.prototype._send = function(xhr, packet) {
   xhr.obj.onerror = e => {
     xhr.obj.onerror = null;
     for (i in xhr.promises) {
-      xhr.promises[i].reject(new amf.Response(-1006, e.message, e));
+      if (e && e.message && typeof(e.message) === 'string') {
+        xhr.promises[i].reject(new amf.Response(-1006, e.message, e));
+      }else{
+        xhr.promises[i].reject(new amf.Response(-1006, 'net work error', e));
+      }
     }
     xhr.busy = false;
     xhr.message = null;

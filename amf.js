@@ -439,7 +439,7 @@ amf.Client.prototype._send = function(xhr, packet) {
   xhr.obj.onerror = e => {
     xhr.obj.onerror = null;
     for (i in xhr.promises) {
-      this.promises[i].reject(new amf.Response(-1006, e.message, e.message));
+      xhr.promises[i].reject(new amf.Response(-1006, e.message, e));
     }
     xhr.busy = false;
     xhr.message = null;
